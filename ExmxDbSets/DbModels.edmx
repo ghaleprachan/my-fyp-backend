@@ -1,0 +1,2130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RoofCareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DisctrictId" Type="int" Nullable="false" />
+          <Property Name="MunicipalityId" Type="int" Nullable="false" />
+          <Property Name="CurrentLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressType" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceCharge" Type="float" Nullable="false" />
+          <Property Name="TravellingCost" Type="float" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="TotalCharge" Type="float" Nullable="false" />
+          <Property Name="CustomerAcceptance" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaidStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IssuedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceProvider" Type="int" Nullable="false" />
+          <Property Name="Customer" Type="int" Nullable="false" />
+          <Property Name="ServiceType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BookingDate" Type="datetime" Nullable="false" />
+          <Property Name="ServiceDate" Type="datetime" Nullable="false" />
+          <Property Name="CustomerAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProblemDescription" Type="nvarchar(max)" />
+          <Property Name="ProblemImage" Type="nvarchar(max)" />
+          <Property Name="SpecialistAcceptance" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompletedStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BillId" Type="int" />
+        </EntityType>
+        <EntityType Name="ChatSystem">
+          <Key>
+            <PropertyRef Name="Chat_id" />
+          </Key>
+          <Property Name="Chat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderId" Type="int" Nullable="false" />
+          <Property Name="ReceiverId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SendDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DisctrictImage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Emails">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="FavoriteId" />
+          </Key>
+          <Property Name="FavoriteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="SPId" Type="int" Nullable="false" />
+          <Property Name="AddedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FeedbackReply">
+          <Key>
+            <PropertyRef Name="ReplyId" />
+          </Key>
+          <Property Name="ReplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeedbackId" Type="int" Nullable="false" />
+          <Property Name="Reply" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReplyDate" Type="datetime" Nullable="false" />
+          <Property Name="ReplyBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedbacks">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeedbackBy" Type="int" Nullable="false" />
+          <Property Name="FeedbaclTo" Type="int" Nullable="false" />
+          <Property Name="Feedback" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="FeedbackDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LastMessage">
+          <Key>
+            <PropertyRef Name="LastChatId" />
+          </Key>
+          <Property Name="LastChatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParticipantOne" Type="int" Nullable="false" />
+          <Property Name="ParticipantTwo" Type="int" Nullable="false" />
+          <Property Name="LastMessage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SendDate" Type="datetime" Nullable="false" />
+          <Property Name="Seen" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SenderId" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Municipality">
+          <Key>
+            <PropertyRef Name="MunicipalityId" />
+          </Key>
+          <Property Name="MunicipalityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MunicipalityName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DisctrictId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotificationType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NotificationText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NotificationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfferReports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportedById" Type="int" Nullable="false" />
+          <Property Name="ReportedOfferId" Type="int" Nullable="false" />
+          <Property Name="ReportText" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offers">
+          <Key>
+            <PropertyRef Name="offerId" />
+          </Key>
+          <Property Name="offerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="offerBy" Type="int" Nullable="false" />
+          <Property Name="PostedDate" Type="datetime" Nullable="false" />
+          <Property Name="ValidDate" Type="datetime" Nullable="false" />
+          <Property Name="OfferDescription" Type="nvarchar(max)" />
+          <Property Name="OfferImage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProblemReports">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportedById" Type="int" Nullable="false" />
+          <Property Name="ReportedProblemId" Type="int" Nullable="false" />
+          <Property Name="ReportText" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Problems">
+          <Key>
+            <PropertyRef Name="ProblemId" />
+          </Key>
+          <Property Name="ProblemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProblemBy" Type="int" Nullable="false" />
+          <Property Name="PostedDate" Type="datetime" Nullable="false" />
+          <Property Name="ProblemDescription" Type="nvarchar(max)" />
+          <Property Name="ProblemImage" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profession">
+          <Key>
+            <PropertyRef Name="ProfessionId" />
+          </Key>
+          <Property Name="ProfessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfessionName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProfessionImage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Reports">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportedBy" Type="int" Nullable="false" />
+          <Property Name="ReportedTo" Type="int" Nullable="false" />
+          <Property Name="ReportDescription" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Responses">
+          <Key>
+            <PropertyRef Name="RespondedId" />
+          </Key>
+          <Property Name="RespondedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RespondedBy" Type="int" Nullable="false" />
+          <Property Name="RespondedTo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfession">
+          <Key>
+            <PropertyRef Name="UserProfessionId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ProfessionId" Type="int" Nullable="false" />
+          <Property Name="UserProfessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserProfileImage" Type="nvarchar(max)" />
+          <Property Name="UserRating" Type="float" />
+          <Property Name="AboutUser" Type="nvarchar(max)" />
+          <Property Name="Verified" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserSaved">
+          <Key>
+            <PropertyRef Name="SavedId" />
+          </Key>
+          <Property Name="SavedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="OfferId" Type="int" Nullable="false" />
+          <Property Name="SaveDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserStates">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceProviderId" Type="int" Nullable="false" />
+          <Property Name="Completed" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OnBudget" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OnTime" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Address_District">
+          <End Role="District" Type="Self.District" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="DisctrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Municipality">
+          <End Role="Municipality" Type="Self.Municipality" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipality">
+              <PropertyRef Name="MunicipalityId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="MunicipalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_Bill">
+          <End Role="Bill" Type="Self.Bill" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bill">
+              <PropertyRef Name="BillId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="BillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="ServiceProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatSystem_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ChatSystem" Type="Self.ChatSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ChatSystem">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatSystem_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ChatSystem" Type="Self.ChatSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ChatSystem">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacts_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emails_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Emails" Type="Self.Emails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Emails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="SPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackReply_Feedbacks">
+          <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FeedbackReply" Type="Self.FeedbackReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feedbacks">
+              <PropertyRef Name="FeedbackId" />
+            </Principal>
+            <Dependent Role="FeedbackReply">
+              <PropertyRef Name="FeedbackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackReply_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="FeedbackReply" Type="Self.FeedbackReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FeedbackReply">
+              <PropertyRef Name="ReplyBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedbacks_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Feedbacks">
+              <PropertyRef Name="FeedbackBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedbacks_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Feedbacks">
+              <PropertyRef Name="FeedbaclTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastMessage_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LastMessage" Type="Self.LastMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LastMessage">
+              <PropertyRef Name="ParticipantOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastMessage_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="LastMessage" Type="Self.LastMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LastMessage">
+              <PropertyRef Name="ParticipantTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Municipality_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Municipality" Type="Self.Municipality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Municipality">
+              <PropertyRef Name="DisctrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostReports_Offers">
+          <End Role="Offers" Type="Self.Offers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferReports" Type="Self.OfferReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offers">
+              <PropertyRef Name="offerId" />
+            </Principal>
+            <Dependent Role="OfferReports">
+              <PropertyRef Name="ReportedOfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostReports_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OfferReports" Type="Self.OfferReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OfferReports">
+              <PropertyRef Name="ReportedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemReports_Problems">
+          <End Role="Problems" Type="Self.Problems" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProblemReports" Type="Self.ProblemReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problems">
+              <PropertyRef Name="ProblemId" />
+            </Principal>
+            <Dependent Role="ProblemReports">
+              <PropertyRef Name="ReportedProblemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemReports_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProblemReports" Type="Self.ProblemReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProblemReports">
+              <PropertyRef Name="ReportedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Problems_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Problems" Type="Self.Problems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Problems">
+              <PropertyRef Name="ProblemBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Reports">
+              <PropertyRef Name="ReportedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responses_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Responses" Type="Self.Responses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Responses">
+              <PropertyRef Name="RespondedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responses_Users1">
+          <End Role="Problems" Type="Self.Problems" Multiplicity="1" />
+          <End Role="Responses" Type="Self.Responses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problems">
+              <PropertyRef Name="ProblemId" />
+            </Principal>
+            <Dependent Role="Responses">
+              <PropertyRef Name="RespondedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfession_Profession">
+          <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+          <End Role="UserProfession" Type="Self.UserProfession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profession">
+              <PropertyRef Name="ProfessionId" />
+            </Principal>
+            <Dependent Role="UserProfession">
+              <PropertyRef Name="ProfessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfession_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserProfession" Type="Self.UserProfession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserProfession">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSaved_Offers">
+          <End Role="Offers" Type="Self.Offers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserSaved" Type="Self.UserSaved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offers">
+              <PropertyRef Name="offerId" />
+            </Principal>
+            <Dependent Role="UserSaved">
+              <PropertyRef Name="OfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSaved_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSaved" Type="Self.UserSaved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSaved">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStates_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserStates" Type="Self.UserStates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserStates">
+              <PropertyRef Name="ServiceProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="RoofCareModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatSystem" EntityType="Self.ChatSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emails" EntityType="Self.Emails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favorite" EntityType="Self.Favorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeedbackReply" EntityType="Self.FeedbackReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LastMessage" EntityType="Self.LastMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipality" EntityType="Self.Municipality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferReports" EntityType="Self.OfferReports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offers" EntityType="Self.Offers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProblemReports" EntityType="Self.ProblemReports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Problems" EntityType="Self.Problems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profession" EntityType="Self.Profession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Responses" EntityType="Self.Responses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfession" EntityType="Self.UserProfession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSaved" EntityType="Self.UserSaved" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStates" EntityType="Self.UserStates" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Address_District" Association="Self.FK_Address_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Municipality" Association="Self.FK_Address_Municipality">
+            <End Role="Municipality" EntitySet="Municipality" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Users" Association="Self.FK_Address_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_Bill" Association="Self.FK_Bookings_Bill">
+            <End Role="Bill" EntitySet="Bill" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_Users" Association="Self.FK_Bookings_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_Users1" Association="Self.FK_Bookings_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatSystem_Users" Association="Self.FK_ChatSystem_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ChatSystem" EntitySet="ChatSystem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatSystem_Users1" Association="Self.FK_ChatSystem_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ChatSystem" EntitySet="ChatSystem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacts_Users" Association="Self.FK_Contacts_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emails_Users" Association="Self.FK_Emails_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Emails" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_Users" Association="Self.FK_Favorite_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_Users1" Association="Self.FK_Favorite_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackReply_Feedbacks" Association="Self.FK_FeedbackReply_Feedbacks">
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
+            <End Role="FeedbackReply" EntitySet="FeedbackReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackReply_Users" Association="Self.FK_FeedbackReply_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FeedbackReply" EntitySet="FeedbackReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedbacks_Users" Association="Self.FK_Feedbacks_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedbacks_Users1" Association="Self.FK_Feedbacks_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Feedbacks" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastMessage_Users" Association="Self.FK_LastMessage_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="LastMessage" EntitySet="LastMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastMessage_Users1" Association="Self.FK_LastMessage_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="LastMessage" EntitySet="LastMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Municipality_District" Association="Self.FK_Municipality_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Municipality" EntitySet="Municipality" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostReports_Offers" Association="Self.FK_PostReports_Offers">
+            <End Role="Offers" EntitySet="Offers" />
+            <End Role="OfferReports" EntitySet="OfferReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostReports_Users" Association="Self.FK_PostReports_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OfferReports" EntitySet="OfferReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemReports_Problems" Association="Self.FK_ProblemReports_Problems">
+            <End Role="Problems" EntitySet="Problems" />
+            <End Role="ProblemReports" EntitySet="ProblemReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemReports_Users" Association="Self.FK_ProblemReports_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ProblemReports" EntitySet="ProblemReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Problems_Users" Association="Self.FK_Problems_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Problems" EntitySet="Problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Users" Association="Self.FK_Reports_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reports" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responses_Users" Association="Self.FK_Responses_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Responses" EntitySet="Responses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responses_Users1" Association="Self.FK_Responses_Users1">
+            <End Role="Problems" EntitySet="Problems" />
+            <End Role="Responses" EntitySet="Responses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfession_Profession" Association="Self.FK_UserProfession_Profession">
+            <End Role="Profession" EntitySet="Profession" />
+            <End Role="UserProfession" EntitySet="UserProfession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfession_Users" Association="Self.FK_UserProfession_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserProfession" EntitySet="UserProfession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSaved_Offers" Association="Self.FK_UserSaved_Offers">
+            <End Role="Offers" EntitySet="Offers" />
+            <End Role="UserSaved" EntitySet="UserSaved" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSaved_Users" Association="Self.FK_UserSaved_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSaved" EntitySet="UserSaved" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStates_Users" Association="Self.FK_UserStates_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserStates" EntitySet="UserStates" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RoofCareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RoofCareEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(RoofCareModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(RoofCareModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Addresses" EntityType="RoofCareModel.Address" />
+          <EntitySet Name="Bills" EntityType="RoofCareModel.Bill" />
+          <EntitySet Name="Bookings" EntityType="RoofCareModel.Booking" />
+          <EntitySet Name="ChatSystems" EntityType="RoofCareModel.ChatSystem" />
+          <EntitySet Name="Contacts" EntityType="RoofCareModel.Contact" />
+          <EntitySet Name="Districts" EntityType="RoofCareModel.District" />
+          <EntitySet Name="Emails" EntityType="RoofCareModel.Email" />
+          <EntitySet Name="Favorites" EntityType="RoofCareModel.Favorite" />
+          <EntitySet Name="Feedbacks" EntityType="RoofCareModel.Feedback" />
+          <EntitySet Name="LastMessages" EntityType="RoofCareModel.LastMessage" />
+          <EntitySet Name="Municipalities" EntityType="RoofCareModel.Municipality" />
+          <EntitySet Name="Notifications" EntityType="RoofCareModel.Notification" />
+          <EntitySet Name="Offers" EntityType="RoofCareModel.Offer" />
+          <EntitySet Name="Problems" EntityType="RoofCareModel.Problem" />
+          <EntitySet Name="Professions" EntityType="RoofCareModel.Profession" />
+          <EntitySet Name="Reports" EntityType="RoofCareModel.Report" />
+          <EntitySet Name="Responses" EntityType="RoofCareModel.Respons" />
+          <EntitySet Name="UserProfessions" EntityType="RoofCareModel.UserProfession" />
+          <EntitySet Name="Users" EntityType="RoofCareModel.User" />
+          <EntitySet Name="UserSaveds" EntityType="RoofCareModel.UserSaved" />
+          <AssociationSet Name="FK_Address_District" Association="RoofCareModel.FK_Address_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Municipality" Association="RoofCareModel.FK_Address_Municipality">
+            <End Role="Municipality" EntitySet="Municipalities" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Users" Association="RoofCareModel.FK_Address_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_Bill" Association="RoofCareModel.FK_Bookings_Bill">
+            <End Role="Bill" EntitySet="Bills" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_Users" Association="RoofCareModel.FK_Bookings_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_Users1" Association="RoofCareModel.FK_Bookings_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatSystem_Users" Association="RoofCareModel.FK_ChatSystem_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ChatSystem" EntitySet="ChatSystems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatSystem_Users1" Association="RoofCareModel.FK_ChatSystem_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ChatSystem" EntitySet="ChatSystems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacts_Users" Association="RoofCareModel.FK_Contacts_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Municipality_District" Association="RoofCareModel.FK_Municipality_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Municipality" EntitySet="Municipalities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emails_Users" Association="RoofCareModel.FK_Emails_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Email" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_Users" Association="RoofCareModel.FK_Favorite_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Favorite" EntitySet="Favorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_Users1" Association="RoofCareModel.FK_Favorite_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Favorite" EntitySet="Favorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedbacks_Users" Association="RoofCareModel.FK_Feedbacks_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedbacks_Users1" Association="RoofCareModel.FK_Feedbacks_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastMessage_Users" Association="RoofCareModel.FK_LastMessage_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="LastMessage" EntitySet="LastMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastMessage_Users1" Association="RoofCareModel.FK_LastMessage_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="LastMessage" EntitySet="LastMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offers_Users" Association="RoofCareModel.FK_Offers_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSaved_Offers" Association="RoofCareModel.FK_UserSaved_Offers">
+            <End Role="Offer" EntitySet="Offers" />
+            <End Role="UserSaved" EntitySet="UserSaveds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Problems_Users" Association="RoofCareModel.FK_Problems_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Problem" EntitySet="Problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responses_Users1" Association="RoofCareModel.FK_Responses_Users1">
+            <End Role="Problem" EntitySet="Problems" />
+            <End Role="Respons" EntitySet="Responses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfession_Profession" Association="RoofCareModel.FK_UserProfession_Profession">
+            <End Role="Profession" EntitySet="Professions" />
+            <End Role="UserProfession" EntitySet="UserProfessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Users" Association="RoofCareModel.FK_Reports_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Report" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Users1" Association="RoofCareModel.FK_Reports_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Report" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responses_Users" Association="RoofCareModel.FK_Responses_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Respons" EntitySet="Responses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfession_Users" Association="RoofCareModel.FK_UserProfession_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserProfession" EntitySet="UserProfessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSaved_Users" Association="RoofCareModel.FK_UserSaved_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserSaved" EntitySet="UserSaveds" />
+          </AssociationSet>
+          <EntitySet Name="OfferReports" EntityType="RoofCareModel.OfferReport" />
+          <EntitySet Name="ProblemReports" EntityType="RoofCareModel.ProblemReport" />
+          <AssociationSet Name="FK_PostReports_Offers" Association="RoofCareModel.FK_PostReports_Offers">
+            <End Role="Offer" EntitySet="Offers" />
+            <End Role="OfferReport" EntitySet="OfferReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostReports_Users" Association="RoofCareModel.FK_PostReports_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="OfferReport" EntitySet="OfferReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemReports_Problems" Association="RoofCareModel.FK_ProblemReports_Problems">
+            <End Role="Problem" EntitySet="Problems" />
+            <End Role="ProblemReport" EntitySet="ProblemReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemReports_Users" Association="RoofCareModel.FK_ProblemReports_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ProblemReport" EntitySet="ProblemReports" />
+          </AssociationSet>
+          <EntitySet Name="FeedbackReplies" EntityType="RoofCareModel.FeedbackReply" />
+          <AssociationSet Name="FK_FeedbackReply_Feedbacks" Association="RoofCareModel.FK_FeedbackReply_Feedbacks">
+            <End Role="Feedback" EntitySet="Feedbacks" />
+            <End Role="FeedbackReply" EntitySet="FeedbackReplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedbackReply_Users" Association="RoofCareModel.FK_FeedbackReply_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FeedbackReply" EntitySet="FeedbackReplies" />
+          </AssociationSet>
+          <EntitySet Name="Admins" EntityType="RoofCareModel.Admin" />
+          <EntitySet Name="UserStates" EntityType="RoofCareModel.UserState" />
+          <AssociationSet Name="FK_UserStates_Users" Association="RoofCareModel.FK_UserStates_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserState" EntitySet="UserStates" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DisctrictId" Type="Int32" Nullable="false" />
+          <Property Name="MunicipalityId" Type="Int32" Nullable="false" />
+          <Property Name="CurrentLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="District" Relationship="RoofCareModel.FK_Address_District" FromRole="Address" ToRole="District" />
+          <NavigationProperty Name="Municipality" Relationship="RoofCareModel.FK_Address_Municipality" FromRole="Address" ToRole="Municipality" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Address_Users" FromRole="Address" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceCharge" Type="Double" Nullable="false" />
+          <Property Name="TravellingCost" Type="Double" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="TotalCharge" Type="Double" Nullable="false" />
+          <Property Name="CustomerAcceptance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaidStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Bookings" Relationship="RoofCareModel.FK_Bookings_Bill" FromRole="Bill" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceProvider" Type="Int32" Nullable="false" />
+          <Property Name="Customer" Type="Int32" Nullable="false" />
+          <Property Name="ServiceType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ServiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProblemDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProblemImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialistAcceptance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillId" Type="Int32" />
+          <NavigationProperty Name="Bill" Relationship="RoofCareModel.FK_Bookings_Bill" FromRole="Booking" ToRole="Bill" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Bookings_Users" FromRole="Booking" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="RoofCareModel.FK_Bookings_Users1" FromRole="Booking" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ChatSystem">
+          <Key>
+            <PropertyRef Name="Chat_id" />
+          </Key>
+          <Property Name="Chat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiverId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SendDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_ChatSystem_Users" FromRole="ChatSystem" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="RoofCareModel.FK_ChatSystem_Users1" FromRole="ChatSystem" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Contacts_Users" FromRole="Contact" ToRole="User" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisctrictImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Addresses" Relationship="RoofCareModel.FK_Address_District" FromRole="District" ToRole="Address" />
+          <NavigationProperty Name="Municipalities" Relationship="RoofCareModel.FK_Municipality_District" FromRole="District" ToRole="Municipality" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Emails_Users" FromRole="Email" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="FavoriteId" />
+          </Key>
+          <Property Name="FavoriteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="SPId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Favorite_Users" FromRole="Favorite" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="RoofCareModel.FK_Favorite_Users1" FromRole="Favorite" ToRole="User" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeedbackBy" Type="Int32" Nullable="false" />
+          <Property Name="FeedbaclTo" Type="Int32" Nullable="false" />
+          <Property Name="Feedback1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="FeedbackDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Feedbacks_Users" FromRole="Feedback" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="RoofCareModel.FK_Feedbacks_Users1" FromRole="Feedback" ToRole="User" />
+          <NavigationProperty Name="FeedbackReplies" Relationship="RoofCareModel.FK_FeedbackReply_Feedbacks" FromRole="Feedback" ToRole="FeedbackReply" />
+        </EntityType>
+        <EntityType Name="LastMessage">
+          <Key>
+            <PropertyRef Name="LastChatId" />
+          </Key>
+          <Property Name="LastChatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParticipantOne" Type="Int32" Nullable="false" />
+          <Property Name="ParticipantTwo" Type="Int32" Nullable="false" />
+          <Property Name="LastMessage1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SendDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Seen" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SenderId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_LastMessage_Users" FromRole="LastMessage" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="RoofCareModel.FK_LastMessage_Users1" FromRole="LastMessage" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Municipality">
+          <Key>
+            <PropertyRef Name="MunicipalityId" />
+          </Key>
+          <Property Name="MunicipalityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MunicipalityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisctrictId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="RoofCareModel.FK_Address_Municipality" FromRole="Municipality" ToRole="Address" />
+          <NavigationProperty Name="District" Relationship="RoofCareModel.FK_Municipality_District" FromRole="Municipality" ToRole="District" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NotificationText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NotificationDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="offerId" />
+          </Key>
+          <Property Name="offerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="offerBy" Type="Int32" Nullable="false" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ValidDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OfferDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OfferImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Offers_Users" FromRole="Offer" ToRole="User" />
+          <NavigationProperty Name="UserSaveds" Relationship="RoofCareModel.FK_UserSaved_Offers" FromRole="Offer" ToRole="UserSaved" />
+          <NavigationProperty Name="OfferReports" Relationship="RoofCareModel.FK_PostReports_Offers" FromRole="Offer" ToRole="OfferReport" />
+        </EntityType>
+        <EntityType Name="Problem">
+          <Key>
+            <PropertyRef Name="ProblemId" />
+          </Key>
+          <Property Name="ProblemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProblemBy" Type="Int32" Nullable="false" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProblemDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProblemImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Problems_Users" FromRole="Problem" ToRole="User" />
+          <NavigationProperty Name="Responses" Relationship="RoofCareModel.FK_Responses_Users1" FromRole="Problem" ToRole="Respons" />
+          <NavigationProperty Name="ProblemReports" Relationship="RoofCareModel.FK_ProblemReports_Problems" FromRole="Problem" ToRole="ProblemReport" />
+        </EntityType>
+        <EntityType Name="Profession">
+          <Key>
+            <PropertyRef Name="ProfessionId" />
+          </Key>
+          <Property Name="ProfessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfessionName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProfessionImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserProfessions" Relationship="RoofCareModel.FK_UserProfession_Profession" FromRole="Profession" ToRole="UserProfession" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportedBy" Type="Int32" Nullable="false" />
+          <Property Name="ReportedTo" Type="Int32" Nullable="false" />
+          <Property Name="ReportDescription" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Reports_Users" FromRole="Report" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="RoofCareModel.FK_Reports_Users1" FromRole="Report" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Respons">
+          <Key>
+            <PropertyRef Name="RespondedId" />
+          </Key>
+          <Property Name="RespondedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RespondedBy" Type="Int32" Nullable="false" />
+          <Property Name="RespondedTo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Problem" Relationship="RoofCareModel.FK_Responses_Users1" FromRole="Respons" ToRole="Problem" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_Responses_Users" FromRole="Respons" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserProfession">
+          <Key>
+            <PropertyRef Name="UserProfessionId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ProfessionId" Type="Int32" Nullable="false" />
+          <Property Name="UserProfessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Profession" Relationship="RoofCareModel.FK_UserProfession_Profession" FromRole="UserProfession" ToRole="Profession" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_UserProfession_Users" FromRole="UserProfession" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserProfileImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserRating" Type="Double" />
+          <NavigationProperty Name="Addresses" Relationship="RoofCareModel.FK_Address_Users" FromRole="User" ToRole="Address" />
+          <NavigationProperty Name="Bookings" Relationship="RoofCareModel.FK_Bookings_Users" FromRole="User" ToRole="Booking" />
+          <NavigationProperty Name="Bookings1" Relationship="RoofCareModel.FK_Bookings_Users1" FromRole="User" ToRole="Booking" />
+          <NavigationProperty Name="ChatSystems" Relationship="RoofCareModel.FK_ChatSystem_Users" FromRole="User" ToRole="ChatSystem" />
+          <NavigationProperty Name="ChatSystems1" Relationship="RoofCareModel.FK_ChatSystem_Users1" FromRole="User" ToRole="ChatSystem" />
+          <NavigationProperty Name="Contacts" Relationship="RoofCareModel.FK_Contacts_Users" FromRole="User" ToRole="Contact" />
+          <NavigationProperty Name="Emails" Relationship="RoofCareModel.FK_Emails_Users" FromRole="User" ToRole="Email" />
+          <NavigationProperty Name="Favorites" Relationship="RoofCareModel.FK_Favorite_Users" FromRole="User" ToRole="Favorite" />
+          <NavigationProperty Name="Favorites1" Relationship="RoofCareModel.FK_Favorite_Users1" FromRole="User" ToRole="Favorite" />
+          <NavigationProperty Name="Feedbacks" Relationship="RoofCareModel.FK_Feedbacks_Users" FromRole="User" ToRole="Feedback" />
+          <NavigationProperty Name="Feedbacks1" Relationship="RoofCareModel.FK_Feedbacks_Users1" FromRole="User" ToRole="Feedback" />
+          <NavigationProperty Name="LastMessages" Relationship="RoofCareModel.FK_LastMessage_Users" FromRole="User" ToRole="LastMessage" />
+          <NavigationProperty Name="LastMessages1" Relationship="RoofCareModel.FK_LastMessage_Users1" FromRole="User" ToRole="LastMessage" />
+          <NavigationProperty Name="Offers" Relationship="RoofCareModel.FK_Offers_Users" FromRole="User" ToRole="Offer" />
+          <NavigationProperty Name="Problems" Relationship="RoofCareModel.FK_Problems_Users" FromRole="User" ToRole="Problem" />
+          <NavigationProperty Name="Reports" Relationship="RoofCareModel.FK_Reports_Users" FromRole="User" ToRole="Report" />
+          <NavigationProperty Name="Reports1" Relationship="RoofCareModel.FK_Reports_Users1" FromRole="User" ToRole="Report" />
+          <NavigationProperty Name="Responses" Relationship="RoofCareModel.FK_Responses_Users" FromRole="User" ToRole="Respons" />
+          <NavigationProperty Name="UserProfessions" Relationship="RoofCareModel.FK_UserProfession_Users" FromRole="User" ToRole="UserProfession" />
+          <NavigationProperty Name="UserSaveds" Relationship="RoofCareModel.FK_UserSaved_Users" FromRole="User" ToRole="UserSaved" />
+          <NavigationProperty Name="OfferReports" Relationship="RoofCareModel.FK_PostReports_Users" FromRole="User" ToRole="OfferReport" />
+          <NavigationProperty Name="ProblemReports" Relationship="RoofCareModel.FK_ProblemReports_Users" FromRole="User" ToRole="ProblemReport" />
+          <Property Name="AboutUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FeedbackReplies" Relationship="RoofCareModel.FK_FeedbackReply_Users" FromRole="User" ToRole="FeedbackReply" />
+          <Property Name="Verified" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserStates" Relationship="RoofCareModel.FK_UserStates_Users" FromRole="User" ToRole="UserState" />
+        </EntityType>
+        <EntityType Name="UserSaved">
+          <Key>
+            <PropertyRef Name="SavedId" />
+          </Key>
+          <Property Name="SavedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="OfferId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Offer" Relationship="RoofCareModel.FK_UserSaved_Offers" FromRole="UserSaved" ToRole="Offer" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_UserSaved_Users" FromRole="UserSaved" ToRole="User" />
+          <Property Name="SaveDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Address_District">
+          <End Type="RoofCareModel.District" Role="District" Multiplicity="1" />
+          <End Type="RoofCareModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="DisctrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Municipality">
+          <End Type="RoofCareModel.Municipality" Role="Municipality" Multiplicity="1" />
+          <End Type="RoofCareModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipality">
+              <PropertyRef Name="MunicipalityId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="MunicipalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_Bill">
+          <End Type="RoofCareModel.Bill" Role="Bill" Multiplicity="0..1" />
+          <End Type="RoofCareModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bill">
+              <PropertyRef Name="BillId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="BillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="ServiceProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookings_Users1">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatSystem_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.ChatSystem" Role="ChatSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ChatSystem">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatSystem_Users1">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.ChatSystem" Role="ChatSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ChatSystem">
+              <PropertyRef Name="ReceiverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacts_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Contact" Role="Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Municipality_District">
+          <End Type="RoofCareModel.District" Role="District" Multiplicity="1" />
+          <End Type="RoofCareModel.Municipality" Role="Municipality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Municipality">
+              <PropertyRef Name="DisctrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emails_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Email" Role="Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Favorite" Role="Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_Users1">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Favorite" Role="Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="SPId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedbacks_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Feedback" Role="Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="FeedbackBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedbacks_Users1">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Feedback" Role="Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="FeedbaclTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastMessage_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.LastMessage" Role="LastMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LastMessage">
+              <PropertyRef Name="ParticipantOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastMessage_Users1">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.LastMessage" Role="LastMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LastMessage">
+              <PropertyRef Name="ParticipantTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offers_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Offer" Role="Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="offerBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSaved_Offers">
+          <End Type="RoofCareModel.Offer" Role="Offer" Multiplicity="1" />
+          <End Type="RoofCareModel.UserSaved" Role="UserSaved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="offerId" />
+            </Principal>
+            <Dependent Role="UserSaved">
+              <PropertyRef Name="OfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Problems_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Problem" Role="Problem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Problem">
+              <PropertyRef Name="ProblemBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responses_Users1">
+          <End Type="RoofCareModel.Problem" Role="Problem" Multiplicity="1" />
+          <End Type="RoofCareModel.Respons" Role="Respons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problem">
+              <PropertyRef Name="ProblemId" />
+            </Principal>
+            <Dependent Role="Respons">
+              <PropertyRef Name="RespondedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfession_Profession">
+          <End Type="RoofCareModel.Profession" Role="Profession" Multiplicity="1" />
+          <End Type="RoofCareModel.UserProfession" Role="UserProfession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profession">
+              <PropertyRef Name="ProfessionId" />
+            </Principal>
+            <Dependent Role="UserProfession">
+              <PropertyRef Name="ProfessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Report" Role="Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="ReportedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Users1">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Report" Role="Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="ReportedTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responses_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.Respons" Role="Respons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Respons">
+              <PropertyRef Name="RespondedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfession_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.UserProfession" Role="UserProfession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserProfession">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSaved_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.UserSaved" Role="UserSaved" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSaved">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OfferReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportedById" Type="Int32" Nullable="false" />
+          <Property Name="ReportedOfferId" Type="Int32" Nullable="false" />
+          <Property Name="ReportText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Offer" Relationship="RoofCareModel.FK_PostReports_Offers" FromRole="OfferReport" ToRole="Offer" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_PostReports_Users" FromRole="OfferReport" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ProblemReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ReportedById" Type="Int32" Nullable="false" />
+          <Property Name="ReportedProblemId" Type="Int32" Nullable="false" />
+          <Property Name="ReportText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Problem" Relationship="RoofCareModel.FK_ProblemReports_Problems" FromRole="ProblemReport" ToRole="Problem" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_ProblemReports_Users" FromRole="ProblemReport" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_PostReports_Offers">
+          <End Type="RoofCareModel.Offer" Role="Offer" Multiplicity="1" />
+          <End Type="RoofCareModel.OfferReport" Role="OfferReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="offerId" />
+            </Principal>
+            <Dependent Role="OfferReport">
+              <PropertyRef Name="ReportedOfferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostReports_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.OfferReport" Role="OfferReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OfferReport">
+              <PropertyRef Name="ReportedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemReports_Problems">
+          <End Type="RoofCareModel.Problem" Role="Problem" Multiplicity="1" />
+          <End Type="RoofCareModel.ProblemReport" Role="ProblemReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problem">
+              <PropertyRef Name="ProblemId" />
+            </Principal>
+            <Dependent Role="ProblemReport">
+              <PropertyRef Name="ReportedProblemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemReports_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.ProblemReport" Role="ProblemReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProblemReport">
+              <PropertyRef Name="ReportedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FeedbackReply">
+          <Key>
+            <PropertyRef Name="ReplyId" />
+          </Key>
+          <Property Name="ReplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" />
+          <Property Name="Reply" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Feedback" Relationship="RoofCareModel.FK_FeedbackReply_Feedbacks" FromRole="FeedbackReply" ToRole="Feedback" />
+          <Property Name="ReplyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReplyBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_FeedbackReply_Users" FromRole="FeedbackReply" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_FeedbackReply_Feedbacks">
+          <End Type="RoofCareModel.Feedback" Role="Feedback" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="RoofCareModel.FeedbackReply" Role="FeedbackReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feedback">
+              <PropertyRef Name="FeedbackId" />
+            </Principal>
+            <Dependent Role="FeedbackReply">
+              <PropertyRef Name="FeedbackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedbackReply_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.FeedbackReply" Role="FeedbackReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FeedbackReply">
+              <PropertyRef Name="ReplyBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="UserState">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceProviderId" Type="Int32" Nullable="false" />
+          <Property Name="Completed" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OnBudget" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OnTime" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="RoofCareModel.FK_UserStates_Users" FromRole="UserState" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserStates_Users">
+          <End Type="RoofCareModel.User" Role="User" Multiplicity="1" />
+          <End Type="RoofCareModel.UserState" Role="UserState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserState">
+              <PropertyRef Name="ServiceProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RoofCareModelStoreContainer" CdmEntityContainer="RoofCareEntities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="RoofCareModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="RoofCareModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="RoofCareModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="RoofCareModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RoofCareModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="RoofCareModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RoofCareModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RoofCareModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RoofCareModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="RoofCareModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="MunicipalityId" ColumnName="MunicipalityId" />
+                <ScalarProperty Name="DisctrictId" ColumnName="DisctrictId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="RoofCareModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="IssuedDate" ColumnName="IssuedDate" />
+                <ScalarProperty Name="PaidStatus" ColumnName="PaidStatus" />
+                <ScalarProperty Name="CustomerAcceptance" ColumnName="CustomerAcceptance" />
+                <ScalarProperty Name="TotalCharge" ColumnName="TotalCharge" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="TravellingCost" ColumnName="TravellingCost" />
+                <ScalarProperty Name="ServiceCharge" ColumnName="ServiceCharge" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="RoofCareModel.Booking">
+              <MappingFragment StoreEntitySet="Bookings">
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+                <ScalarProperty Name="CompletedStatus" ColumnName="CompletedStatus" />
+                <ScalarProperty Name="SpecialistAcceptance" ColumnName="SpecialistAcceptance" />
+                <ScalarProperty Name="ProblemImage" ColumnName="ProblemImage" />
+                <ScalarProperty Name="ProblemDescription" ColumnName="ProblemDescription" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="ServiceDate" ColumnName="ServiceDate" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="ServiceProvider" ColumnName="ServiceProvider" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatSystems">
+            <EntityTypeMapping TypeName="RoofCareModel.ChatSystem">
+              <MappingFragment StoreEntitySet="ChatSystem">
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="Chat_id" ColumnName="Chat_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="RoofCareModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ContactType" ColumnName="ContactType" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="RoofCareModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="DisctrictImage" ColumnName="DisctrictImage" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emails">
+            <EntityTypeMapping TypeName="RoofCareModel.Email">
+              <MappingFragment StoreEntitySet="Emails">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmailType" ColumnName="EmailType" />
+                <ScalarProperty Name="Email1" ColumnName="Email" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favorites">
+            <EntityTypeMapping TypeName="RoofCareModel.Favorite">
+              <MappingFragment StoreEntitySet="Favorite">
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="SPId" ColumnName="SPId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="FavoriteId" ColumnName="FavoriteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="RoofCareModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedbacks">
+                <ScalarProperty Name="FeedbackDate" ColumnName="FeedbackDate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Feedback1" ColumnName="Feedback" />
+                <ScalarProperty Name="FeedbaclTo" ColumnName="FeedbaclTo" />
+                <ScalarProperty Name="FeedbackBy" ColumnName="FeedbackBy" />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LastMessages">
+            <EntityTypeMapping TypeName="RoofCareModel.LastMessage">
+              <MappingFragment StoreEntitySet="LastMessage">
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="Seen" ColumnName="Seen" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="LastMessage1" ColumnName="LastMessage" />
+                <ScalarProperty Name="ParticipantTwo" ColumnName="ParticipantTwo" />
+                <ScalarProperty Name="ParticipantOne" ColumnName="ParticipantOne" />
+                <ScalarProperty Name="LastChatId" ColumnName="LastChatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipalities">
+            <EntityTypeMapping TypeName="RoofCareModel.Municipality">
+              <MappingFragment StoreEntitySet="Municipality">
+                <ScalarProperty Name="DisctrictId" ColumnName="DisctrictId" />
+                <ScalarProperty Name="MunicipalityName" ColumnName="MunicipalityName" />
+                <ScalarProperty Name="MunicipalityId" ColumnName="MunicipalityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="RoofCareModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="NotificationDate" ColumnName="NotificationDate" />
+                <ScalarProperty Name="NotificationText" ColumnName="NotificationText" />
+                <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers">
+            <EntityTypeMapping TypeName="RoofCareModel.Offer">
+              <MappingFragment StoreEntitySet="Offers">
+                <ScalarProperty Name="OfferImage" ColumnName="OfferImage" />
+                <ScalarProperty Name="OfferDescription" ColumnName="OfferDescription" />
+                <ScalarProperty Name="ValidDate" ColumnName="ValidDate" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="offerBy" ColumnName="offerBy" />
+                <ScalarProperty Name="offerId" ColumnName="offerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Problems">
+            <EntityTypeMapping TypeName="RoofCareModel.Problem">
+              <MappingFragment StoreEntitySet="Problems">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProblemImage" ColumnName="ProblemImage" />
+                <ScalarProperty Name="ProblemDescription" ColumnName="ProblemDescription" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="ProblemBy" ColumnName="ProblemBy" />
+                <ScalarProperty Name="ProblemId" ColumnName="ProblemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Professions">
+            <EntityTypeMapping TypeName="RoofCareModel.Profession">
+              <MappingFragment StoreEntitySet="Profession">
+                <ScalarProperty Name="ProfessionImage" ColumnName="ProfessionImage" />
+                <ScalarProperty Name="ProfessionName" ColumnName="ProfessionName" />
+                <ScalarProperty Name="ProfessionId" ColumnName="ProfessionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="RoofCareModel.Report">
+              <MappingFragment StoreEntitySet="Reports">
+                <ScalarProperty Name="ReportDescription" ColumnName="ReportDescription" />
+                <ScalarProperty Name="ReportedTo" ColumnName="ReportedTo" />
+                <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Responses">
+            <EntityTypeMapping TypeName="RoofCareModel.Respons">
+              <MappingFragment StoreEntitySet="Responses">
+                <ScalarProperty Name="RespondedTo" ColumnName="RespondedTo" />
+                <ScalarProperty Name="RespondedBy" ColumnName="RespondedBy" />
+                <ScalarProperty Name="RespondedId" ColumnName="RespondedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfessions">
+            <EntityTypeMapping TypeName="RoofCareModel.UserProfession">
+              <MappingFragment StoreEntitySet="UserProfession">
+                <ScalarProperty Name="UserProfessionId" ColumnName="UserProfessionId" />
+                <ScalarProperty Name="ProfessionId" ColumnName="ProfessionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RoofCareModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="AboutUser" ColumnName="AboutUser" />
+                <ScalarProperty Name="UserRating" ColumnName="UserRating" />
+                <ScalarProperty Name="UserProfileImage" ColumnName="UserProfileImage" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSaveds">
+            <EntityTypeMapping TypeName="RoofCareModel.UserSaved">
+              <MappingFragment StoreEntitySet="UserSaved">
+                <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+                <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SavedId" ColumnName="SavedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferReports">
+            <EntityTypeMapping TypeName="RoofCareModel.OfferReport">
+              <MappingFragment StoreEntitySet="OfferReports">
+                <ScalarProperty Name="ReportText" ColumnName="ReportText" />
+                <ScalarProperty Name="ReportedOfferId" ColumnName="ReportedOfferId" />
+                <ScalarProperty Name="ReportedById" ColumnName="ReportedById" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProblemReports">
+            <EntityTypeMapping TypeName="RoofCareModel.ProblemReport">
+              <MappingFragment StoreEntitySet="ProblemReports">
+                <ScalarProperty Name="ReportText" ColumnName="ReportText" />
+                <ScalarProperty Name="ReportedProblemId" ColumnName="ReportedProblemId" />
+                <ScalarProperty Name="ReportedById" ColumnName="ReportedById" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedbackReplies">
+            <EntityTypeMapping TypeName="RoofCareModel.FeedbackReply">
+              <MappingFragment StoreEntitySet="FeedbackReply">
+                <ScalarProperty Name="ReplyBy" ColumnName="ReplyBy" />
+                <ScalarProperty Name="ReplyDate" ColumnName="ReplyDate" />
+                <ScalarProperty Name="Reply" ColumnName="Reply" />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+                <ScalarProperty Name="ReplyId" ColumnName="ReplyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="RoofCareModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStates">
+            <EntityTypeMapping TypeName="RoofCareModel.UserState">
+              <MappingFragment StoreEntitySet="UserStates">
+                <ScalarProperty Name="OnTime" ColumnName="OnTime" />
+                <ScalarProperty Name="OnBudget" ColumnName="OnBudget" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="ServiceProviderId" ColumnName="ServiceProviderId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

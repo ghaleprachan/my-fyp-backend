@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="72b37c094869434da54688be64ba72fa" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="RoofCareModel.Address" Width="1.5" PointX="6" PointY="20.25" />
+        <EntityTypeShape EntityType="RoofCareModel.Bill" Width="1.5" PointX="3.75" PointY="4.25" />
+        <EntityTypeShape EntityType="RoofCareModel.Booking" Width="1.5" PointX="6" PointY="24.625" />
+        <EntityTypeShape EntityType="RoofCareModel.ChatSystem" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="RoofCareModel.Contact" Width="1.5" PointX="3" PointY="37.875" />
+        <EntityTypeShape EntityType="RoofCareModel.District" Width="1.5" PointX="3.75" PointY="28" />
+        <EntityTypeShape EntityType="RoofCareModel.Email" Width="1.5" PointX="3" PointY="40.625" />
+        <EntityTypeShape EntityType="RoofCareModel.Favorite" Width="1.5" PointX="3" PointY="32.25" />
+        <EntityTypeShape EntityType="RoofCareModel.Feedback" Width="1.5" PointX="3" PointY="21.625" />
+        <EntityTypeShape EntityType="RoofCareModel.LastMessage" Width="1.5" PointX="3" PointY="11.5" />
+        <EntityTypeShape EntityType="RoofCareModel.Municipality" Width="1.5" PointX="3.75" PointY="25.25" />
+        <EntityTypeShape EntityType="RoofCareModel.Notification" Width="1.5" PointX="7.75" PointY="18.375" />
+        <EntityTypeShape EntityType="RoofCareModel.Offer" Width="1.5" PointX="3" PointY="43.375" />
+        <EntityTypeShape EntityType="RoofCareModel.Problem" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="RoofCareModel.Profession" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="RoofCareModel.Report" Width="1.5" PointX="3" PointY="35" />
+        <EntityTypeShape EntityType="RoofCareModel.Respons" Width="1.5" PointX="5.25" PointY="15.5" />
+        <EntityTypeShape EntityType="RoofCareModel.UserProfession" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="RoofCareModel.User" Width="1.5" PointX="0.75" PointY="18.375" />
+        <EntityTypeShape EntityType="RoofCareModel.UserSaved" Width="1.5" PointX="5.25" PointY="31.125" />
+        <AssociationConnector Association="RoofCareModel.FK_Address_District" />
+        <AssociationConnector Association="RoofCareModel.FK_Address_Municipality" />
+        <AssociationConnector Association="RoofCareModel.FK_Address_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_Bookings_Bill" />
+        <AssociationConnector Association="RoofCareModel.FK_Bookings_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_Bookings_Users1" />
+        <AssociationConnector Association="RoofCareModel.FK_ChatSystem_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_ChatSystem_Users1" />
+        <AssociationConnector Association="RoofCareModel.FK_Contacts_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_Municipality_District" />
+        <AssociationConnector Association="RoofCareModel.FK_Emails_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_Favorite_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_Favorite_Users1" />
+        <AssociationConnector Association="RoofCareModel.FK_Feedbacks_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_Feedbacks_Users1" />
+        <AssociationConnector Association="RoofCareModel.FK_LastMessage_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_LastMessage_Users1" />
+        <AssociationConnector Association="RoofCareModel.FK_Offers_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_UserSaved_Offers" />
+        <AssociationConnector Association="RoofCareModel.FK_Problems_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_Responses_Users1" />
+        <AssociationConnector Association="RoofCareModel.FK_UserProfession_Profession" />
+        <AssociationConnector Association="RoofCareModel.FK_Reports_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_Reports_Users1" />
+        <AssociationConnector Association="RoofCareModel.FK_Responses_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_UserProfession_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_UserSaved_Users" />
+        <EntityTypeShape EntityType="RoofCareModel.OfferReport" Width="1.5" PointX="5.25" PointY="34.125" />
+        <EntityTypeShape EntityType="RoofCareModel.ProblemReport" Width="1.5" PointX="5.25" PointY="12.5" />
+        <AssociationConnector Association="RoofCareModel.FK_PostReports_Offers" />
+        <AssociationConnector Association="RoofCareModel.FK_PostReports_Users" />
+        <AssociationConnector Association="RoofCareModel.FK_ProblemReports_Problems" />
+        <AssociationConnector Association="RoofCareModel.FK_ProblemReports_Users" />
+        <EntityTypeShape EntityType="RoofCareModel.FeedbackReply" Width="1.5" PointX="5.25" PointY="9.125" />
+        <AssociationConnector Association="RoofCareModel.FK_FeedbackReply_Feedbacks" />
+        <AssociationConnector Association="RoofCareModel.FK_FeedbackReply_Users" />
+        <EntityTypeShape EntityType="RoofCareModel.Admin" Width="1.5" PointX="7.75" PointY="15.5" />
+        <EntityTypeShape EntityType="RoofCareModel.UserState" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="RoofCareModel.FK_UserStates_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
